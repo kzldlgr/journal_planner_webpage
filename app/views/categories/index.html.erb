@@ -1,0 +1,19 @@
+<h1>Categories#index</h1>
+<%= link_to "Add category", new_category_path %>
+
+
+<table>
+    <thead>
+        <tr>Name</tr>
+        <tr>show</tr>
+        <tr>edit</tr>
+    </thead>
+
+    <tbody>
+        <% @categories.each do |category| %>
+        <td><%= category.category_name %></td>
+        <td><%= link_to "Show", category %> </td>
+        <td><%= link_to "Edit", edit_category_path(category) %> </td>
+        <% end %>
+    </tbody>
+</table>
