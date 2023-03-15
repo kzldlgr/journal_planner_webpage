@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update ]
   before_action :authenticate_user!
-  before_action :correct_user, only: %i[ show edit update ]
+  before_action :correct_user, only: [ :show, :edit, :update, :destroy ]
   def index
     @categories = Category.all
   end
@@ -10,15 +10,15 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = Category.new
+    @category = current_user.categories.build
   end
 
   def edit
   end
   
   def create
-    @category = Category.new(category_params)
-
+    #@category = Category.new(category_params)
+    @category = current_user.categories.build(category_params)
     if @category.save
       redirect_to category_url(@category), notice: 'New category has been added!'
     else
@@ -35,8 +35,8 @@ class CategoriesController < ApplicationController
   end
 
   def correct_user
-    @category = current_user.category.find_by(id:params[:id])
-    redirect_to categories_path, notice: "Not Authorized to action please Login" if @category.nil?
+    @category = current_user.categories.find(params[:id])
+    redirect_to category_path, notice: "Not authorized to do action" if @category.nil?
   end
 
   private

@@ -1,7 +1,6 @@
 <h1>Categories#index</h1>
 <%= link_to "Add category", new_category_path %>
 
-
 <table>
     <thead>
         <tr>Name</tr>
@@ -11,9 +10,13 @@
 
     <tbody>
         <% @categories.each do |category| %>
+        <tr>
+        <% if category.user == current_user %>
         <td><%= category.category_name %></td>
         <td><%= link_to "Show", category %> </td>
         <td><%= link_to "Edit", edit_category_path(category) %> </td>
+        <% end %>
+        </tr>
         <% end %>
     </tbody>
 </table>
