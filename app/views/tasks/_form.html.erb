@@ -1,0 +1,40 @@
+
+<%= form_with model: [@category, @task], local: true do |f| %>
+    <p>
+        <% if @task.errors.any? %>
+        <ul>
+            <% @task.errors.full_messages.each do | message |%>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+        <% end %>
+    </p>
+
+
+    <div>
+        <%= f.label :task_name, style: "display: block" %>
+        <%= f.text_field :task_name %>
+    </div>
+
+    <div>
+        <%= f.label :task_body, style: "display: block" %>
+        <%= f.text_field :task_body %>
+    </div>
+
+    <div>
+        <%= f.label :category_id, style: "display: block" %>
+        <%= f.text_field :category_id %>
+    </div>  
+
+    <div>
+        <% f.label :status, style: "display: block" %>
+        <%= f.hidden_field :status, value: 0 %>
+    </div>
+
+    <div>
+        <%= f.submit %>
+    </div>
+    
+<% end %>
+
+<%= @categories.inspect %>

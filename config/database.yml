@@ -16,6 +16,4 @@ test:
 
 production:
   <<: *default
-  database: journal_planner_webpage_production
-  username: journal_planner_webpage
-  password: <%= ENV["JOURNAL_PLANNER_WEBPAGE_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

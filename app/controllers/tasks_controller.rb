@@ -1,10 +1,10 @@
 class TasksController < ApplicationController
- # before_action :get_category
+  before_action :get_category
   
   def index
    # @tasks = Task.all
-   # @tasks = @category.tasks
-    @tasks = Task.where(category_id: params[:category_id])
+    @tasks = @category.tasks.all
+   # @tasks = Task.where(category_id: params[:category_id])
     
   end
 
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
   private
 
   def get_category
-    @category = Category.find(params[:id])
+    @category = Category.find(params[:category_id])
   end
 
   def task_params

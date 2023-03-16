@@ -5,8 +5,10 @@
     <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Task</th>
+            <th>Description</th>
             <th>Category</th>
+            <th>Status</th>
         </tr>
     </thead>
 
@@ -15,8 +17,21 @@
         <tr>
             <td><%= task.id %></td>
             <td><%= task.task_name %></td>
-            <td><%= task.category_id %></td>
+            <td><%= task.task_body %></td>
+            <td><%= @category.category_name %></td>
+            <% if task.status = 0%>
+            <td><%= "Pending" %></td>
+            <% else %>
+            <td><%= "Completed" %></td>
+            <% end %>
         </tr>
         <% end %>
+        <%= @tasks.inspect %>
+        <br/>
+        <br/>
+        <%= current_user.inspect %>
+        <br/>
+        <br/>        
+        <%=  %>
     </tbody>
 </table>
