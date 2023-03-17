@@ -1,9 +1,10 @@
-<h1>Categories#index</h1>
-<%= link_to "Add category", new_category_path %>
-
+<div class="container mt-2">
+<%= link_to "Add category", new_category_path, class: "btn btn-info" %>
+</div>
 <table>
     <thead>
         <tr>Name</tr>
+        <tr>Add</tr>
         <tr>show</tr>
         <tr>edit</tr>
     </thead>
@@ -13,6 +14,7 @@
         <tr>
         <% if category.user == current_user %>
         <td><%= category.category_name %></td>
+        <td><%= link_to "Add task", new_category_task_path(category.id) %></td>
         <td><%= link_to "Show", category %> </td>
         <td><%= link_to "Edit", edit_category_path(category) %> </td>
         <% end %>

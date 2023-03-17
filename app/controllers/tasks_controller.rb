@@ -2,7 +2,6 @@ class TasksController < ApplicationController
   before_action :get_category
   
   def index
-   # @tasks = Task.all
     @tasks = @category.tasks.all
    # @tasks = Task.where(category_id: params[:category_id])
     
@@ -21,7 +20,7 @@ class TasksController < ApplicationController
   def create
     #@task = Tasks.new(task_params)
     @task = @category.tasks.build(task_params)
-
+    
     if @task.save
       redirect_to category_tasks_path, notice: 'New task has been added!'
     else
@@ -44,7 +43,7 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:task_name, :task_body, :user_id, :status, :category_id)
+    params.require(:task).permit(:task_name, :task_body, :status, :category_id)
   end
 
 end
