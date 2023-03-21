@@ -1,37 +1,31 @@
-<h1>Tasks#index</h1>
-<p>Find me in app/views/tasks/index.html.erb</p>
-
-<table>
-    <thead>
+<%= render @category %>
+<table class="table table-striped table-bordered table-hover mt-2">
+  <thead class="table-dark text-center">
         <tr>
-            <th>ID</th>
-            <th>Task</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Status</th>
+            <th scope="col">Task</th>
+            <th scope="col">Description</th>
+            <th scope="col">Status</th>  
+            <th colspan="4">Options</th>
         </tr>
     </thead>
 
     <tbody>
         <% @tasks.each do |task| %>
         <tr>
-            <td><%= task.id %></td>
             <td><%= task.task_name %></td>
             <td><%= task.task_body %></td>
-            <td><%= @category.category_name %></td>
             <% if task.status = 0%>
             <td><%= "Pending" %></td>
             <% else %>
             <td><%= "Completed" %></td>
             <% end %>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(task.category_id, task.id, ), class:"btn btn-info text-white" %></td>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-circle-check"></i> Complete') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-success" %></td>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-warning text-white" %></td>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-trash"></i> Delete') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-danger" %></td>
         </tr>
         <% end %>
-        <%= @tasks.inspect %>
-        <br/>
-        <br/>
-        <%= current_user.inspect %>
-        <br/>
-        <br/>        
-        <%=  %>
+
     </tbody>
 </table>
+</div>

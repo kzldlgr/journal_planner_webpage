@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :get_category
-  
+  before_action :authenticate_user!
   def index
     @tasks = @category.tasks.all
    # @tasks = Task.where(category_id: params[:category_id])

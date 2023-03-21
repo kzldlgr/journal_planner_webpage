@@ -10,17 +10,18 @@ class CategoriesController < ApplicationController
   end
 
   def new
-    @category = current_user.categories.build
+    @category = Category.new
+    #@category = current_user.categories.build
   end
 
   def edit
   end
   
   def create
-    #@category = Category.new(category_params)
-    @category = current_user.categories.build(category_params)
+    @category = Category.new(category_params)
+    # @category = current_user.categories.build(category_params)
     if @category.save
-      redirect_to category_url(@category), notice: 'New category has been added!'
+      redirect_to category_tasks_path(@category), notice: 'New category has been added!'
     else
       render :new, status: :unproccessable_entity
     end
@@ -35,7 +36,8 @@ class CategoriesController < ApplicationController
   end
 
   def correct_user
-    @category = current_user.categories.find(params[:id])
+    @category = Category.find(params[:id])
+    #@category = current_user.categories.find(params[:id])
     redirect_to category_path, notice: "Not authorized to do action" if @category.nil?
   end
 

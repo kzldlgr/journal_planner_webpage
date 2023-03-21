@@ -9,16 +9,15 @@
         </ul>
         <% end %>
     </p>
-
-
-    <div>
-        <%= f.label :task_name, style: "display: block" %>
-        <%= f.text_field :task_name %>
+  
+    <div class="col-sm-12">
+        <% f.label :task_name, style: "display: block" %>
+        <%= f.text_field :task_name, class: 'form-control mb-2', placeholder: "Task Name" %>
     </div>
 
     <div>
-        <%= f.label :task_body, style: "display: block" %>
-        <%= f.text_field :task_body %>
+        <% f.label :task_body, style: "display: block" %>
+        <%= f.text_field :task_body, class: 'form-control', placeholder: "Task Desciption" %>
     </div>
 
     <div>
@@ -31,9 +30,9 @@
         <%= f.hidden_field :status, value: 0 %>
     </div>  
     <div>
-        <%= f.submit %>
+        <%= f.submit class:"btn btn-dark mt-2" %>
     </div>
     
 <% end %>
 
-<%= @categories.inspect %>
+    <%= link_to "Cancel", category_tasks_path , class:"btn btn-danger mt-2"%>

@@ -1,4 +1,6 @@
-<h1>Tasks#new</h1>
-<p>Find me in app/views/tasks/new.html.erb</p>
-
+<div class="container-fluid col mt-2">
+  <div class="card" style="width: 20rem;">
+  <h5 class="card-header">New Task for Category: <%= @category.category_name %></h5>
+<div class="card-body">
 <%= render "form", task: @task %>
+</div>
