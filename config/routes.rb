@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   resources :categories do
-    resources :tasks
+    resources :tasks do
+      patch :update_status
+    end
   end
+
   root 'home#index'
+  get 'home/alltask'
   devise_for :users
-  
   # get '/categories' => 'categories#index'
   # get '/categories/new' => 'categories#new', as: 'new_category'
   # post '/categories' => 'categories#create', as: 'create_category'

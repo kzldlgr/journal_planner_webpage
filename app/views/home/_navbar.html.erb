@@ -1,6 +1,9 @@
 <nav class="navbar navbar-expand-lg bg-dark text-light" data-bs-theme="dark">
   <div class="container-fluid">
+    <div class="d-inline-flex">
+    <i class="fa-solid fa-book-journal-whills fs-1"></i>
     <%= link_to "Journal Planner", root_path, class: "navbar-brand fs-4" %>
+    </div>
     <div class="d-flex">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
             <% if user_signed_in? %>
@@ -14,8 +17,7 @@
                 </ul>
             </div>
             <% else %>
-                <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-light' %></li>
-                <li class="nav-item"><%= link_to "Login", new_user_session_path, class: 'btn btn-light' %></li>
+                
             <% end %>
         </ul>
     </div>

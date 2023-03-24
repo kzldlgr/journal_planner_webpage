@@ -1,12 +1,13 @@
-<nav class="col-md-2 d-none d-md-block bg-secondary sidebar shadow-lg mb-5 ">
+<nav class="col-md-2 d-none d-md-block bg-secondary sidebar shadow-lg mb-5" style="height: 100%">
     <div class="sidebar-sticky">
         <ul class="nav flex-column text-center gap-3">
-        <li class="nav-item">
-            <label class="m-5 text-white">Hi, <%= current_user.email %></label>
-        </li>
-        <li><%= link_to "New task", categories_path, class:'btn btn-secondary' %></li>
-        <li><%= link_to "Show all categories", categories_path, class:'btn btn-secondary'  %></li>
-        <li><%= link_to "Completed Tasks", class:'btn btn-secondary'%></li>
+            <li class="nav-item">
+                <h4 class="my-5 text-white">Hi, <%= current_user.email %></h4>
+            </li>
+            <li><%= link_to raw('<i class="fa-solid fa-file"></i> New Task'), categories_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
+            <li><%= link_to raw('<i class="fa-solid fa-bars-progress"></i> All Task'), home_alltask_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
+            <li><%= link_to raw('<i class="fa-solid fa-list-check"></i> Show Category'), categories_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
+            <li><%= link_to raw('<i class="fa-solid fa-calendar-check"></i> Calendar'), root_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
         </ul>
     </div>
-</nav>
+</nav>      

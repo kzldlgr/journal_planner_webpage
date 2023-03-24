@@ -1,7 +1,7 @@
 <div class="container-fluid col">
-    <div class="d-inline-flex gap-2">
+    <div class="d-flex justify-content-between">
         <label class="fs-1">Categories</label>
-        <%= link_to raw('<i class="fa-solid fa-circle-plus"></i> New Category'), new_category_path, class: "btn btn-secondary m-auto" %>
+        <label class="py-2"><%= link_to raw('<i class="fa-solid fa-circle-plus"></i> New Category'), new_category_path, class: "btn btn-secondary my-2" %></label>
     </div>
 
     <table class="table table-striped table-bordered table-hover mt-2">
@@ -17,7 +17,7 @@
             <tr>
             <% if category.user == current_user %>
             <td class="text-center"><%= category.category_name %></td>
-            <td class="text-center col-sm-2"><%= link_to raw('<i class="fa-solid fa-circle-plus"></i> New Task'), new_category_task_path(category.id), class: "btn btn-secondary" %></td>
+            <td class="text-center col-sm-2"><%= link_to raw('<i class="fa-solid fa-circle-plus"></i> Add Task'), new_category_task_path(category.id), class: "btn btn-secondary" %></td>
             <td class="text-center col-sm-2"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_tasks_path(category), class: "btn btn-info text-white" %> </td>
             <td class="text-center col-sm-2"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_path(category), class: "btn btn-warning text-white" %> </td>
             <% end %>

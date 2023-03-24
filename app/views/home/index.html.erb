@@ -1,43 +1,24 @@
-<div class="container-fluid col">
 <% if user_signed_in? %>
-<div>
-    <label class="fs-1 mt-2">To Do List</label>
-</div>
-
-<table class="table table-striped table-bordered table-hover mt-2">
-  <thead class="table-dark text-center">
-    <tr>
-      <th scope="col">Category</th>
-      <th scope="col">Task</th>
-      <th scope="col">Description</th>
-      <th scope="col">Status</th>
-      <th colspan="4">Options</th>
-    </tr>
-    </thead>
-
-    <tbody>
-        <% @tas.each do |task| %>
-        <tr>
-            <% @cattas.each do |catta|%>
-                <% if catta.id == task.category_id %>
-                    <td class="text-center"><%= catta.category_name %></td>
-            <td class="text-center"><%= task.task_name %></td>
-            <td><%= task.task_body %></td>
-            <% if task.status = 0 %>
-            <td><%= "Pending" %></td>
-            <% else %>
-            <td><%= "Completed" %></td>
+<div class="col">
+    <div class="card mt-2">
+    <h5 class="card-header bg-secondary shadow text-white"><i class="fa-solid fa-calendar-days"></i> Calendar</h5>
+        <div class="card-body">
+            <%= month_calendar(events: @dailies) do |date, dailies| %>
+                <div class="day">
+                    <%= date.day %>
+                 </div>
+                 <div class="">
+                <% dailies.each do | daily |%>
+                    <% if daily.end_time.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d') %>
+                        <%= link_to daily.task_name,category_task_path(daily.category_id,daily.id), class:"btn btn-danger mt-1" %>
+                    <% else %>
+                        <%= link_to daily.task_name,category_task_path(daily.category_id,daily.id), class:"btn btn-info text-white mt-1" %>
+                    <% end %>
+                <% end %>   
+                </div>  
             <% end %>
-           <% end %>
-            <% end %>
-            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(task.category_id, task.id, ), class:"btn btn-info text-white" %></td>
-            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-circle-check"></i> Complete') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-success" %></td>
-            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-warning text-white" %></td>
-            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-trash"></i> Delete') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-danger" %></td>
-        </tr>     
-        <% end %>
-    </tbody>
-</table>
+        </div>
+    </div>
 <% else %>
     <div class="container">
         <div class="position-absolute top-50 start-50 translate-middle ">
@@ -56,7 +37,6 @@
         </div>
     </div>    
 
-<% end %>
-<%= @set_category %> 
 </div>
 
+<% end %>

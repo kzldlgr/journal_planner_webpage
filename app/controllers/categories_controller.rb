@@ -1,5 +1,4 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: %i[ show edit update ]
   before_action :authenticate_user!
   before_action :correct_user, only: [ :show, :edit, :update, :destroy ]
   def index
@@ -23,15 +22,15 @@ class CategoriesController < ApplicationController
     if @category.save
       redirect_to category_tasks_path(@category), notice: 'New category has been added!'
     else
-      render :new, status: :unproccessable_entity
+      render :new, notice: :unproccessable_entity
     end
   end
 
   def update
     if @category.update(category_params)
-      redirect_to category_url(@category), notice: "Category was successfully updated."
+      redirect_to categories_path(@category), notice: "Category was successfully updated."
     else
-      render :edit, status: :unproccessable_entity
+      render :edit, notice: :unproccessable_entity
     end
   end
 

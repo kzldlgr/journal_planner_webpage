@@ -1,0 +1,49 @@
+<div class="col">
+<div>
+    <label class="fs-1 mt-2">To Do List</label>
+</div>
+
+<table class="table table-bordered table-hover mt-2">
+  <thead class="table-dark text-center">
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Task created</th>
+      <th scope="col">Deadline</th>
+      <th colspan="4">Options</th>
+    </tr>
+    </thead>
+        <tbody>
+            <% @tas.each do |all| %>
+                <% @cattas.each do |catta|%>
+                    <% if catta.id == all.category_id %>
+                        <% if all.end_time.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d') %>
+                            <tr class="bg-danger-subtle text-danger">
+                            <td class="text-center"><%= catta.category_name %></td>
+                            <td class="text-center"><i class="fa-solid fa-file-circle-exclamation text-danger"></i> <%= all.task_name %></td>
+                        <% else %>
+                            <tr>
+                            <td class="text-center"><%= catta.category_name %></td>
+                            <td class="text-center"><%= all.task_name %></td>
+                        <% end %>
+                        <td><%= all.task_body %></td>
+                        <td><%= all.status %></td>
+                        <td><%= all.start_time.strftime('%Y-%m-%d %I:%M %p') %></td>
+                        <td><%= all.end_time.strftime('%Y-%m-%d %I:%M %p') %></td>
+                    <% end %>
+                <% end %>
+                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(all.category_id, all.id), class:"btn btn-info text-white" %></td>
+                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-circle-check"></i> Complete') , edit_category_task_path(all.category_id, all.id ), class:"btn btn-success" %></td>
+                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_task_path(all.category_id, all.id ), class:"btn btn-warning text-white" %></td>
+                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete') ,category_task_path(all.category_id, all.id) , method: :delete, class:"btn btn-danger" %></td>
+            </tr>     
+            <% end %>
+        </tbody>
+
+
+</table>
+    <% if @tas == [] %>
+        <h5 class="text-danger"><i class="fa-regular fa-bell"></i> No available task</h5>
+    <% end %>
