@@ -1,13 +1,11 @@
-<nav class="col-md-2 d-none d-md-block bg-secondary sidebar shadow-lg mb-5" style="height: 100%">
+<nav class="col-md-2 d-none d-md-block bg-dark bg-gradient sidebar shadow-lg mb-5" style="height: 100%">
     <div class="sidebar-sticky">
-        <ul class="nav flex-column text-center gap-3">
-            <li class="nav-item">
-                <h4 class="my-5 text-white">Hi, <%= current_user.email %></h4>
-            </li>
-            <li><%= link_to raw('<i class="fa-solid fa-file"></i> New Task'), categories_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
-            <li><%= link_to raw('<i class="fa-solid fa-bars-progress"></i> All Task'), home_alltask_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
-            <li><%= link_to raw('<i class="fa-solid fa-list-check"></i> Show Category'), categories_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
-            <li><%= link_to raw('<i class="fa-solid fa-calendar-check"></i> Calendar'), root_path, class:'btn btn-dark mb-5 col-sm-10' %></li>
-        </ul>
+        <div class="flex-column text-center gap-3">
+            <div class="nav-item"><h4 class="my-5 text-white">Hi, <%= current_user.email %></h4></div>
+            <div class="nav-item"><%= link_to raw('<i class="fa-solid fa-file"></i> New Task'), categories_path, class:'btn btn-secondary my-2 fw-bold', style:"width: 100%" %></div>
+            <div class="nav-item"><%= link_to raw('<i class="fa-solid fa-bars-progress"></i> All Task'), home_alltask_path, class:'btn btn-secondary my-2 fw-bold', style:"width: 100%" %></div>
+            <div class="nav-item"><%= link_to raw('<i class="fa-solid fa-calendar-check"></i> Calendar'), root_path, class:'btn btn-secondary my-2 fw-bold', style:"width: 100%" %></div>
+            <div class="nav-item"><%= link_to raw('<i class="fa-solid fa-list-check"></i> Show Category'), categories_path, class:'btn btn-secondary mt-2 mb-4 fw-bold', style:"width: 100%" %></div>
+        </div>
     </div>
-</nav>      
+</nav>    

@@ -13,6 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+body{
+    background: linear-gradient(90deg, rgba(189,199,200,1) 15%, rgba(0,178,182,1) 82%);
+}
+
 .simple-calendar table {
       -webkit-border-horizontal-spacing: 0px;
       -webkit-border-vertical-spacing: 0px;
@@ -66,57 +71,57 @@
     font-weight: bold;
 }
 
-.day {
-    height: 80px;
+.simple-calendar .day {
+    height: 100px;
     font-size: 20px;
 }
 
-.wday-0 {
+.simple-calendar .day .wday-0 {
     color: #f00;
 }
-.wday-1 {
+.simple-calendar .day .wday-1 {
     color: #000;
 }
-.wday-2 {
+.simple-calendar .day .wday-2 {
     color: #000;
 }
-.wday-3 {
+.simple-calendar .day .wday-3 {
     color: #000;
 }
-.wday-4 {
+.simple-calendar .day .wday-4 {
     color: #000;
 }
-.wday-5 {
+.simple-calendar .day .wday-5 {
     color: #000;
 }
-.wday-6 {
+.simple-calendar .day .wday-6 {
     color: #f00;
 }
 
-.today {
+.simple-calendar .day .today {
     background-color: #f50e0e;
 }
-.past {
+.simple-calendar .day .past {
     color: #ccc;
 }
-.future {
+.simple-calendar .day .future {
     color: #000;
 }
 
-.start-date {
+.simple-calendar .day .start-date {
     background-color: #f0f0f0;
 }
 
-.prev-month {
+.simple-calendar .day .prev-month {
     color: #ccc;
 }
-.next-month {
+.simple-calendar .day .next-month {
     color: #ccc;
 }
-.current-month {
+.simple-calendar .day .current-month {
     color: #000;
 }
 
-.has-events {
+.simple-calendar .day .has-events {
     background-color: #f0f0f0;
 }

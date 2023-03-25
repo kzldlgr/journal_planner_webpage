@@ -4,7 +4,7 @@
 </div>
 
 <table class="table table-bordered table-hover mt-2">
-  <thead class="table-dark text-center">
+  <thead class="bg-dark bg-gradient text-center text-white">
     <tr>
       <th scope="col">Category</th>
       <th scope="col">Task</th>
@@ -20,24 +20,24 @@
                 <% @cattas.each do |catta|%>
                     <% if catta.id == all.category_id %>
                         <% if all.end_time.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d') %>
-                            <tr class="bg-danger-subtle text-danger">
+                            <tr class="bg-danger-subtle text-danger fw-bold">
                             <td class="text-center"><%= catta.category_name %></td>
                             <td class="text-center"><i class="fa-solid fa-file-circle-exclamation text-danger"></i> <%= all.task_name %></td>
                         <% else %>
-                            <tr>
+                            <tr class="bg-body-secondary fw-bold">
                             <td class="text-center"><%= catta.category_name %></td>
                             <td class="text-center"><%= all.task_name %></td>
                         <% end %>
                         <td><%= all.task_body %></td>
-                        <td><%= all.status %></td>
-                        <td><%= all.start_time.strftime('%Y-%m-%d %I:%M %p') %></td>
-                        <td><%= all.end_time.strftime('%Y-%m-%d %I:%M %p') %></td>
+                        <td class="text-center"><%= all.status %></td>
+                        <td class="text-center"><%= all.start_time.strftime('%Y-%m-%d') %></td>
+                        <td class="text-center"><%= all.end_time.strftime('%Y-%m-%d') %></td>
                     <% end %>
                 <% end %>
                 <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(all.category_id, all.id), class:"btn btn-info text-white" %></td>
-                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-circle-check"></i> Complete') , edit_category_task_path(all.category_id, all.id ), class:"btn btn-success" %></td>
-                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_task_path(all.category_id, all.id ), class:"btn btn-warning text-white" %></td>
-                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete') ,category_task_path(all.category_id, all.id) , method: :delete, class:"btn btn-danger" %></td>
+                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-circle-check"></i> Complete'), category_task_path(all.category_id, all.id, :status => "completed" ), method: :patch, class:"btn btn-success" %></td>
+                <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit'), edit_category_task_path(all.category_id, all.id ), class:"btn btn-warning text-white" %></td>
+                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete'),category_task_path(all.category_id, all.id) , method: :delete, class:"btn btn-danger" %></td>
             </tr>     
             <% end %>
         </tbody>
@@ -45,5 +45,5 @@
 
 </table>
     <% if @tas == [] %>
-        <h5 class="text-danger"><i class="fa-regular fa-bell"></i> No available task</h5>
+        <h5 class="text-danger"><i class="fa-regular fa-hand-point-left"></i> No available task</h5>
     <% end %>

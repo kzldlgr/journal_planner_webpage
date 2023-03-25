@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
 <div class="col">
     <div class="card mt-2">
-    <h5 class="card-header bg-secondary shadow text-white"><i class="fa-solid fa-calendar-days"></i> Calendar</h5>
+    <h5 class="card-header bg-secondary bg-gradient shadow text-white"><i class="fa-solid fa-calendar-days"></i> Calendar</h5>
         <div class="card-body">
             <%= month_calendar(events: @dailies) do |date, dailies| %>
                 <div class="day">
@@ -22,16 +22,20 @@
 <% else %>
     <div class="container">
         <div class="position-absolute top-50 start-50 translate-middle ">
-            <div class="card p-3 bg-secondary" style="width: 24rem;">
-                <i class="fa-solid fa-book fs-1 mr-2 text-center"></i>
-                <div class="card-body text-center">
+            <div class="card bg-secondary bg-gradient p-3 shadow  rounded" style="width: 24rem;">
+                <div class="card-header bg-dark bg-gradient text-white fs-3 text-center">
+                    <i class="fa-solid fa-book fs-1 text-center"></i>.
+                </div>
+                <div class="card-body text-center my-4 text-white fw-bold">
                     <label class="fs-1 card-title">Journal Planner</label>
-                    <p class="card-text">Your friendly planner app</p>
+                    <label class="fs-4">Monitor your daily tasks!</label>
                 </div>
 
-                <div class="card-body text-center">
-                        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-dark' %>
-                        <%= link_to "Login", new_user_session_path, class: 'btn btn-dark' %>
+                <div class="card-body">
+                    <div class="d-flex gap-2">
+                        <%= link_to "Sign Up", new_user_registration_path, class: 'btn btn-dark fw-bold', style:"width: 100%" %>
+                        <%= link_to "Login", new_user_session_path, class: 'btn btn-dark fw-bold', style:"width: 100%" %>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,10 +2,10 @@
   <%= link_to "Back to Categories", categories_path, class:"btn btn-secondary" %>
         <div class="d-flex justify-content-between">
         <label class="fs-1 ">Category: <%= @category.category_name %></label>
-        <label class="py-2"><%= link_to raw('<i class="fa-solid fa-circle-plus"></i> Add Task'), new_category_task_path(@category), class: "btn btn-secondary my-2" %>
+        <label class="py-2"><%= link_to raw('<i class="fa-solid fa-circle-plus"></i> Add Task'), new_category_task_path(@category), class: "btn btn-dark my-2" %>
         </div>
 <table class="table table-bordered table-hover mt-2">
-  <thead class="table-dark text-center">
+  <thead class="bg-dark bg-gradient text-center text-white">
         <tr>
             <th scope="col">Task</th>
             <th scope="col">Description</th>
@@ -19,20 +19,20 @@
     <tbody>
         <% @tasks.each do |task| %>
         <% if task.end_time.strftime('%Y-%m-%d') == Date.today.strftime('%Y-%m-%d') %>
-        <tr class="bg-danger-subtle text-danger text-center">
+        <tr class="bg-danger-subtle text-danger fw-bold">
             <td><i class="fa-solid fa-file-circle-exclamation text-danger"></i><%= task.task_name %></td>
         <% else %>
-        <tr class="text-center">
+        <tr class="bg-body-secondary fw-bold">
             <td><%= task.task_name %></td>
         <% end %>
             <td><%= task.task_body %></td>
-            <td><%= task.status %></td>
-            <td><%= task.start_time.strftime('%Y-%m-%d')  %></td>
-            <td><%= task.end_time.strftime('%Y-%m-%d')  %></td>
-            <td><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(task.category_id, task.id ), class:"btn btn-info text-white" %></td>
-            <td><%= link_to raw('<i class="fa-solid fa-circle-check"></i> Complete'), edit_category_task_path(task.category_id, task.id ), class:"btn btn-success" %></td>
-            <td><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit') , edit_category_task_path(task.category_id, task.id ), class:"btn btn-warning text-white" %></td>
-            <td><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete'), category_task_path(@category, task) , method: :delete,  class:"btn btn-danger" %></td>
+            <td class="text-center"><%= task.status %></td>
+            <td class="text-center"><%= task.start_time.strftime('%Y-%m-%d')  %></td>
+            <td class="text-center"><%= task.end_time.strftime('%Y-%m-%d')  %></td>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(task.category_id, task.id ), class:"btn btn-info text-white" %></td>
+            <td class="text-center"><%= button_to raw('<i class="fa-solid fa-circle-check"></i> Complete'), category_task_path(task.category_id, task.id, :status => "complete" ),method: :patch, class:"btn btn-success" %></td>
+            <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit'), edit_category_task_path(task.category_id, task.id ), class:"btn btn-warning text-white" %></td>
+            <td class="text-center"><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete'), category_task_path(@category, task) , method: :delete,  class:"btn btn-danger" %></td>
         </tr>
         <% end %>
     </tbody>
