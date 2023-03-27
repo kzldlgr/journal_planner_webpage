@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   resources :categories do
-    resources :tasks do
-      patch :update_status
+    resources :tasks 
     end
-  end
 
   root 'home#index'
   get 'home/alltask'

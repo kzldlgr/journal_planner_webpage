@@ -35,7 +35,7 @@
                     <% end %>
                 <% end %>
                 <td class="text-center"><%= link_to raw('<i class="fa-solid fa-eye"></i> View '), category_task_path(all.category_id, all.id), class:"btn btn-info text-white" %></td>
-                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-circle-check"></i> Complete'), category_task_path(all.category_id, all.id, :status => "completed" ), method: :patch, class:"btn btn-success" %></td>
+                <td class="text-center"><%= button_to raw('<i class="fa-solid fa-circle-check"></i> Complete'), category_task_path(all.category_id, all.id, :status => "Completed" ), method: :patch, class:"btn btn-success" %></td>
                 <td class="text-center"><%= link_to raw('<i class="fa-solid fa-pen-to-square"></i> Edit'), edit_category_task_path(all.category_id, all.id ), class:"btn btn-warning text-white" %></td>
                 <td class="text-center"><%= button_to raw('<i class="fa-solid fa-trash"></i> Delete'),category_task_path(all.category_id, all.id) , method: :delete, class:"btn btn-danger" %></td>
             </tr>     
