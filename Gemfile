@@ -41,7 +41,7 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem "simple_calendar", "~> 2.4"
 
 gem 'devise'
 
@@ -61,7 +61,7 @@ group :development do
   gem "web-console"
 
 
-gem "simple_calendar", "~> 2.4"
+
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
